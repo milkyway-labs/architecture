@@ -1,3 +1,23 @@
+# Table of Contents
+
+- [Overview](#overview)
+    - [What is MilkyWay?](#what-is-milkyway)
+    - [How does it work?](#how-does-it-work)
+    - [Understanding Key Terms](#understanding-key-terms)
+- [Diagram](#diagram)
+    - [Preparation for launch](#preparation-for-launch)
+    - [Liquid Staking Process](#liquid-staking-process)
+    - [Withdrawal Process](#withdrawal-process)
+    - [Exchange Rate Updating Process](#exchange-rate-updating-process)
+    - [Validator Set Changes Process](#validator-set-changes-process)
+    - [Operator Set Changes Process](#operator-set-changes-process)
+    - [Slashing Incidence Process](#slashing-incidence-process)
+    - [Compounding Staking Rewards Process](#compounding-staking-rewards-process)
+- [Development](#development)
+    - [CosmWasm Smart Contracts](#cosmwasm-smart-contracts)
+    - [MilkyWay Daemon](#milkyway-daemon)
+
+
 # Overview
 
 This document serves as a comprehensive guide to understanding the underlying design and structure of MilkyWay.
@@ -8,7 +28,7 @@ This document will be an essential resource for developers, operators, and anyon
 
 MilkyWay offers a liquid staking solution for the [Celestia](https://celestia.org/) ecosystem, and it will initially be deployed and operated on [Osmosis](https://osmosis.zone/) due to technical constraints that cannot be immediately addressed. When users stake their TIA coins with MilkyWay, they receive an on-chain representation of their TIA staking position, known as `stTIA`. This empowers Celestia token holders to access liquidity for their staked assets, enabling trading or their use as collateral in various DeFi products.
 
-## How Does it Work?
+## How does it work?
 
 At its core, MilkyWay uses CosmWasm contracts and a multisig custody system. It also leverages the Cosmos SDK authz module to introduce liquid staking derivative for Celestia ecosystem.
 
@@ -170,14 +190,13 @@ In the event of slashing, the following process is expected to be processed.
 
 # Development
 
+**Our dedicated team of engineers is actively building the following contracts and program. We’re planning to open source them in the near future.**
+
 ## CosmWasm Smart Contracts
 
-This repository contains MilkyWay's core contracts that will be deployed and operated on [Osmosis](https://osmosis.zone/).  
-
-**We’re planning to open source this soon.**
+The MilkyWay's core contracts that will be deployed and operated on [Osmosis](https://osmosis.zone/).  
 
 ## MilkyWay Daemon
 
 The MilkyWay daemon is an off-chain program written in Go that provides convenient functionalities for operators to use. Also, it contains coordinator program to coordinate between the Osmosis and Celestia.
 
-**We’re planning to open source this soon.**
