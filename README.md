@@ -36,9 +36,9 @@ At its core, MilkyWay uses CosmWasm contracts and a multisig custody system. It 
 
 Before diving into the technical architecture of MilkyWay, let's get comfortable with a few terms that will pop up:
 
-- `TIA` is native coin on Celestia
+- `TIA` is the native coin on Celestia
 - `osmoTIA` is IBC denomination for TIA sent to Osmosis blockchain
-- `stTIA` is minted tokenfactory denom. It increases linearly against `osmoTIA` over time.
+- `stTIA` is minted through the `tokenfactory` module on Osmosis when users stake `osmoTIA`. It is reward-bearing token meaning it increases linearly against `osmoTIA` over time.
 - Operators are trusted entities entrusted with the operation of the MilkyWay protocol, with each operator holding keys for all the multisigs used within the protocol.
 - Validators are established Celestia validators who receive delegations from MilkyWay protocol.
 
