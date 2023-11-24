@@ -53,7 +53,7 @@ The following diagrams for each process provide a visual representation of Milky
 At launch, MilkyWay begins with 7 operators. Every operator needs to generate 3 accounts on Celestia and share their public keys. This information will be used to set up the following multi-signature accounts. It is essential that the generated accounts are securely stored in a vault with as low risk of compromise as possible.
 
 1. `Staker multisig`
-    - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It serves its purpose solely by granting full authorization to the staker controller multisig account. The full authorization means to grant privileges to grant and revoke to the staker controller multisig account on behalf of the staker.
+    - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It serves its purpose solely by granting full authorization to the staker controller multisig account. The full authorization means to grant privileges to grant to the staker controller multisig account on behalf of the staker.
 
 2. `Staker controller multisig`
     - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It receives a full authorization from the staker multisig account and performs actions on behalf of the staker multisig account.
@@ -78,9 +78,6 @@ There will be an account called `Grantee`, which will receive a limited authoriz
     - `MsgTransfer`
         - Setting this authorization with the specific source port, channel and an allow list of the MilkyWay’s contract address.
         - Under this limited authorization, the grantee is permitted to ibc transfer the the addresses listed in the allow list.
-    - `MsgRevoke`
-        - This authorization is granted in the event that the `Grantee` account is compromised.
-
 
 ## Liquid Staking Process
 
