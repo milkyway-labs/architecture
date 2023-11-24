@@ -26,7 +26,7 @@ This document will be an essential resource for developers, operators, and anyon
 
 ## What is MilkyWay?
 
-MilkyWay offers a liquid staking solution for the [Celestia](https://celestia.org/) ecosystem, and it will initially be deployed and operated on [Osmosis](https://osmosis.zone/) due to technical constraints that cannot be immediately addressed. When users stake their TIA coins with MilkyWay, they receive an on-chain representation of their TIA staking position, known as `stTIA`. This empowers Celestia token holders to access liquidity for their staked assets, enabling trading or their use as collateral in various DeFi products.
+MilkyWay offers a liquid staking solution for the [Celestia](https://celestia.org/) ecosystem, and it will initially be deployed and operated on [Osmosis](https://osmosis.zone/) due to technical constraints that cannot be immediately addressed. When users stake their TIA coins with MilkyWay, they receive an on-chain representation of their TIA staking position, known as `milkTIA`. This empowers Celestia token holders to access liquidity for their staked assets, enabling trading or their use as collateral in various DeFi products.
 
 ## How does it work?
 
@@ -38,7 +38,7 @@ Before diving into the technical architecture of MilkyWay, let's get comfortable
 
 - `TIA` is the native coin on Celestia
 - `osmoTIA` is IBC denomination for TIA sent to Osmosis blockchain
-- `stTIA` is minted through the `tokenfactory` module on Osmosis when users stake `osmoTIA`. It is reward-bearing token meaning it increases linearly against `osmoTIA` over time.
+- `milkTIA` is minted through the `tokenfactory` module on Osmosis when users stake `osmoTIA`. It is reward-bearing token meaning it increases linearly against `osmoTIA` over time.
 - Operators are trusted entities entrusted with the operation of the MilkyWay protocol, with each operator holding keys for all the multisigs used within the protocol.
 - Validators are established Celestia validators who receive delegations from MilkyWay protocol.
 
@@ -90,7 +90,7 @@ We anticipate that TIA holders transfer their TIA from Celestia to Osmosis if th
 
 1. Let’s assume that a user initiates a request to liquid stake their `osmosTIA` into the CW staking contract on Osmosis.
 
-2. The contract calculates how much `stTIA` to provide based on the exchange rate of `TIA`. Then it mints `stTIA` using the `tokenfactory` module of Osmosis and gives the user `stTIA` (staked TIA) as a tokenized representation of the staked TIA coin.
+2. The contract calculates how much `milkTIA` to provide based on the exchange rate of `TIA`. Then it mints `milkTIA` using the `tokenfactory` module of Osmosis and gives the user `milkTIA` (staked TIA) as a tokenized representation of the staked TIA coin.
 
 3. The contract constructs an IBC transfer transaction to the staker multisig account on Celestia and broadcast it.
 
@@ -102,7 +102,7 @@ We anticipate that TIA holders transfer their TIA from Celestia to Osmosis if th
 
 ![Banner!](assets/withdrawal.png)
 
-1. Let’s assume that a user initiates a request to liquid unstake their `stTIA` into the CW staking contract on Osmosis.
+1. Let’s assume that a user initiates a request to liquid unstake their `milkTIA` into the CW staking contract on Osmosis.
 
 2. The contract groups the unbonding request into a batch, which is then delivered to Celestia at the end of each batch period. By default, the batch period is 3 days.
 
@@ -128,7 +128,7 @@ During the delegation process, the deposited osmoTIA is transferred to Celestia 
 
 2. IBC transfer the withdrawn staking rewards to the staking contract on Osmosis
 
-3. Upon the staking rewards arriving on Osmosis, the staking contract updates the exchange rate. This increases the value of `stTIA` over time.
+3. Upon the staking rewards arriving on Osmosis, the staking contract updates the exchange rate. This increases the value of `milkTIA` over time.
 
 ## Validator Set Changes Process
 
