@@ -74,10 +74,6 @@ There is an account called `Grantee`, which will receive a limited authorization
         - This grant is needed to allow the `Grantee` to withdraw staking rewards from the `Staker` multisig account.
     - `MsgTransfer`
         - This grant is needed for the `Grantee` to IBC transfer. It is important to note that the grant is setup with the specific source port, channel and an allow list of the MilkyWay’s staking contract address. With this constraint, the `Grantee` is only permitted to IBC transfer to the contract address.
-    - `MsgSetWithdrawAddress`
-        - This message is needed to change the withdraw address for rewards associated with the `Staker` multisig account to the `Rewards Collector` multisig account to enhance accounting management.
-    - `MsgGrantAllowance`
-        - This message is needed for the `Grantee` to use transaction fees from the `Staker` multisig account.
 
 ## Liquid Staking Process
 
