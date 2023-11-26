@@ -53,31 +53,31 @@ The following diagrams for each process provide a visual representation of Milky
 At launch, MilkyWay begins with 7 operators. Every operator needs to generate 3 accounts on Celestia and share their public keys. This information will be used to set up the following multi-signature accounts. It is essential that the generated accounts are securely stored in a vault with as low risk of compromise as possible.
 
 1. `Staker multisig`
-    - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It serves its purpose solely by granting full authorization to the staker controller multisig account. The full authorization means to grant privileges to grant to the staker controller multisig account on behalf of the staker.
+    - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It serves its purpose solely by granting full authorization to the `Staker Controller` multisig account. The full authorization means to grant privileges to grant to the `Staker Controller` multisig account on behalf of the staker.
 
 2. `Staker controller multisig`
-    - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It receives a full authorization from the staker multisig account and performs actions on behalf of the staker multisig account.
+    - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It receives a full authorization from the `Staker` multisig account and performs actions on behalf of the staker multisig account.
 
 3. `Rewards collector multisig`
     - This account is configured as a 5-of-7 multisig, utilizing the public keys of the operators. It is primarily responsible for receiving staking rewards on behalf of the staker multisig account and is instrumental in enhancing accounting management.
 
-There will be an account called `Grantee`, which will receive a limited authorization of the `Staker` multisig. The limited authorization prevents the `Grantee` from taking any actions that could have a detrimental impact on the protocol.
+There is an account called `Grantee`, which will receive a limited authorization of the `Staker` multisig and will be run by coordinator. The limited authorization prevents the `Grantee` from taking any actions that could have a detrimental impact on the protocol.
 
 - Limited authorization includes:
     - `MsgDelegate`
-        - Setting this authorization with an allow list of validators selected by the MilkyWay protocol.
-        - Under this limited authorization, the grantee is permitted to delegate to the validators listed in the allow list.
+        - This grant is needed for the `Grantee` to delegate on behalf of the `Staker` multisig. It is important to note that the grant is setup with an allow list of validators selected by the MilkyWay protocol. With this constraint, the `Grantee` is only permitted to delegate among the validators listed in the allow list.
     - `MsgUndelegate`
-        - Setting this authorization with an allow list of validators selected by the MilkyWay protocol
-        - Under this limited authorization, the grantee is permitted to undelegate from the validators listed in the allow list.
+        - This grant is needed for the Grantee to undelegate on behalf of the Staker multisig. It is important to note that the grant is setup with an allow list of validators selected by the MilkyWay protocol. With this constraint, the grantee is only permitted to undelegate among the validators listed in the allow list.
     - `MsgBeginRedelegate`
-        - Setting this authorization with an allow list of validators selected by the MilkyWay protocol
-        - Under this limited authorization, the grantee is permitted to redelegate among the validators listed in the allow list.
+        - This grant is needed for the Grantee to redelegate delegations from the Staker multisig account in case validator set is changed. It is important to note that the grant is setup with an allow list of validators selected by the MilkyWay protocol. With this constraint, the grantee is only permitted to redelegate among the validators listed in the allow list.
     - `MsgWithdrawDelegatorReward`
-        - The `Grantee` is permitted to withdraw rewards from `the Staker` multisig.
+        - This grant is needed to allow the `Grantee` to withdraw staking rewards from the `Staker` multisig account.
     - `MsgTransfer`
-        - Setting this authorization with the specific source port, channel and an allow list of the MilkyWay’s contract address.
-        - Under this limited authorization, the grantee is permitted to ibc transfer the the addresses listed in the allow list.
+        - This grant is needed for the `Grantee` to IBC transfer. It is important to note that the grant is setup with the specific source port, channel and an allow list of the MilkyWay’s staking contract address. With this constraint, the `Grantee` is only permitted to IBC transfer to the contract address.
+    - `MsgSetWithdrawAddress`
+        - This message is needed to change the withdraw address for rewards associated with the `Staker` multisig account to the `Rewards Collector` multisig account to enhance accounting management.
+    - `MsgGrantAllowance`
+        - This message is needed for the `Grantee` to use transaction fees from the `Staker` multisig account.
 
 ## Liquid Staking Process
 
