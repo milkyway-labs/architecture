@@ -183,11 +183,9 @@ In the event of slashing, the following process is expected to be processed.
 
 # Development
 
-**Our dedicated team of engineers is actively building the following contracts and program. We’re planning to open source them in the near future.**
-
 ## CosmWasm Smart Contracts
 
-The MilkyWay's core contracts that will be deployed and operated on [Osmosis](https://osmosis.zone/).  
+The MilkyWay's core contracts that will be deployed and operated on [Osmosis](https://osmosis.zone/) and the source code can be found in [here](https://github.com/milkyway-labs/milkyway-contracts).
 
 ## MilkyWay Daemon
 
