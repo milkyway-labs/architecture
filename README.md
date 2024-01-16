@@ -1,3 +1,7 @@
+# Technical Architecture
+
+![image](./assets/banner.png)
+
 # Table of Contents
 
 - [Overview](#overview)
